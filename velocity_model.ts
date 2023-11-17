@@ -24,10 +24,10 @@ start_button.onclick = function () {
     let velocity_input = document.getElementById("vel") as HTMLInputElement;
     let velocity = parseFloat(velocity_input.value);
 
-    let numDrops = Math.floor(Math.random() * (100 - 10 + 1)) + 10; // Número aleatório de gotas entre 10 e 100
+    let numGotas = Math.floor(Math.random() * (100 - 10 + 1)) + 10; // Número aleatório de gotas entre 10 e 100
     let drops: { center: number[], velocity: number[], time: number }[] = [];
 
-    for (let i = 0; i < numDrops; i++) {
+    for (let i = 0; i < numGotas; i++) {
         let center: number[] = [Math.random() * velocity_screen.width, Math.random() * velocity_screen.height];
         let v: number[] = [0, velocity]; // Ângulo fixo em 90 graus
         let t: number = 0;
@@ -40,7 +40,7 @@ start_button.onclick = function () {
     setInterval(function () {
         simulation_context.clearRect(0, 0, velocity_screen.width, velocity_screen.height);
 
-        for (let i = 0; i < numDrops; i++) {
+        for (let i = 0; i < numGotas; i++) {
             let drop = drops[i];
             drop.time = (drop.time + dt) / dt;
             update_coord(drop.center, drop.velocity, drop.time);
